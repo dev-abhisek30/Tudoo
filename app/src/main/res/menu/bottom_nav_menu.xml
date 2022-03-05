@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/bottom_selector_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/allTodoFragment"
+        android:icon="@drawable/bottom_selector_completed"
+        android:title="All" />
+</menu>
