@@ -74,4 +74,5 @@ dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
     implementation 'nl.bryanderidder:themed-toggle-button-group:1.4.1'
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
 }
