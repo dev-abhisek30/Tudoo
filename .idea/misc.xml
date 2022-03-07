@@ -11,18 +11,30 @@
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/checkbox_selector.xml" value="0.184" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/circle_white_solid.xml" value="0.3515" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/circle_white_stroke.xml" value="0.3515" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/ic_arrow_down.xml" value="0.248" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/ic_arrow_up.xml" value="0.248" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/ic_filter.xml" value="0.248" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/ic_home.xml" value="0.248" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/ic_notification.xml" value="0.248" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/ic_plus_btn_bg.xml" value="0.182" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/ic_sort.xml" value="0.248" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/ic_trash.xml" value="0.22" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/main_button_bg.xml" value="0.24" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/priority_btn_bg.xml" value="0.3515" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/recyclerview_bg.xml" value="0.3515" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/searchview_bg.xml" value="0.248" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/setting_btn_bg.xml" value="0.24" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/transparent_background.xml" value="0.3515" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/layout/calendar_day_layout.xml" value="0.35190217391304346" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/layout/calendar_day_legend.xml" value="0.35190217391304346" />
-        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/layout/fragment_add.xml" value="0.3533090151120375" />
-        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/layout/fragment_all_todo.xml" value="0.1734375" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/layout/custom_row_layout.xml" value="0.35054347826086957" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/layout/fragment_add.xml" value="0.33" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/layout/fragment_all_todo.xml" value="0.33" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/layout/fragment_update.xml" value="0.1734375" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/layout/fragment_update.xml" value="0.33" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/menu/bottom_nav_menu.xml" value="0.353125" />
+        <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/menu/popup_menu.xml" value="0.33" />
       </map>
     </option>
   </component>

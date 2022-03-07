@@ -25,19 +25,41 @@
         <action
             android:id="@+id/action_addFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_addFragment_to_allTodoFragment"
+            app:destination="@id/allTodoFragment" />
+        <argument
+            android:name="fragmentNo"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
         android:name="com.dev.simplified.tudoo.UpdateFragment"
         android:label="fragment_update"
         tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="currentItem"
+            app:argType="com.dev.simplified.tudoo.data.Todo" />
         <action
             android:id="@+id/action_updateFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_updateFragment_to_allTodoFragment"
+            app:destination="@id/allTodoFragment" />
+        <argument
+            android:name="fragmentNo"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/allTodoFragment"
         android:name="com.dev.simplified.tudoo.AllTodoFragment"
         android:label="fragment_all_todo"
-        tools:layout="@layout/fragment_all_todo" />
+        tools:layout="@layout/fragment_all_todo" >
+        <action
+            android:id="@+id/action_allTodoFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_allTodoFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
 </navigation>

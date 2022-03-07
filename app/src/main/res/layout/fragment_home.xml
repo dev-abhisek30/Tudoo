@@ -6,93 +6,127 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="#E5E5E5"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/exOneAppBarLayout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="#E5E5E5"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="14dp">
-
-                <TextView
-                    android:id="@+id/exOneYearText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:layout_gravity="start"
-                    tools:text="2019" />
+                android:background="@color/white"
+                android:theme="@style/AppTheme.AppBarOverlay">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:padding="14dp">
 
                     <TextView
-                        android:id="@+id/exOneMonthText"
+                        android:id="@+id/yearText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
                         android:textColor="@color/black"
-                        android:textSize="38sp"
-                        tools:text="April" />
+                        android:textSize="24sp"
+                        android:fontFamily="@font/rubik_regular"
+                        android:layout_gravity="start"
+                        tools:text="2019" />
 
-                    <CheckBox
-                        android:id="@+id/weekModeCheckBox"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="fill_horizontal"
-                        android:layout_marginBottom="20dp"
-                        android:button="@drawable/checkbox_selector"
-                        android:padding="2dp"
-                        android:text=""
-                        android:textColor="#1973E8"
-                        android:textSize="18sp" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/monthText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rubik_medium"
+                            android:textColor="@color/black"
+                            android:textSize="38sp"
+                            tools:text="April" />
+
+                        <CheckBox
+                            android:id="@+id/weekModeCheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="fill_horizontal"
+                            android:layout_marginBottom="20dp"
+                            android:button="@drawable/checkbox_selector"
+                            android:padding="2dp"
+                            android:text=""
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+                <include
+                    android:id="@+id/legendLayout"
+                    layout="@layout/calendar_day_legend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp" />
 
-            <include
-                android:id="@+id/legendLayout"
-                layout="@layout/calendar_day_legend"
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <com.kizitonwose.calendarview.CalendarView
+                android:id="@+id/calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
+                app:cv_dayViewResource="@layout/calendar_day_layout"
+                app:cv_orientation="horizontal"
+                app:cv_outDateStyle="endOfRow"
+                app:cv_inDateStyle="allMonths"
+                app:cv_scrollMode="paged" />
 
-        </com.google.android.material.appbar.AppBarLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_bold"
+                android:text="Today's Todos"
+                android:padding="14dp"
+                android:textSize="34sp" />
 
-        <com.kizitonwose.calendarview.CalendarView
-            android:id="@+id/exOneCalendar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cv_dayViewResource="@layout/calendar_day_layout"
-            app:cv_orientation="horizontal"
-            app:cv_outDateStyle="endOfRow"
-            app:cv_inDateStyle="allMonths"
-            app:cv_scrollMode="paged" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/todoRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
 
-        <!--<androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/todoRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false" />-->
+            <ImageView
+                android:id="@+id/emptyTodoImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_empty_folder"
+                android:visibility="gone" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/emptyTodoTxtview"
+                style="@style/style5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Todo Found"
+                android:layout_marginBottom="32dp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addBtn"
@@ -100,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="20dp"
-        app:backgroundTint="#1973E8"
+        app:backgroundTint="@color/example_3_blue"
         app:srcCompat="@drawable/ic_add"
         app:tint="@color/white"
         tools:ignore="SpeakableTextPresentCheck" />

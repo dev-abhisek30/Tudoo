@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuSortByHighPriority"
+        android:title="Sort By High Priority"
+        android:icon="@drawable/ic_filter" />
+
+    <item
+        android:id="@+id/menuSortByLowPriority"
+        android:title="Sort By Low Priority"
+        android:icon="@drawable/ic_filter" />
+
+    <item
+        android:id="@+id/menuDeleteAll"
+        android:title="Delete All"
+        android:icon="@drawable/ic_trash" />
+</menu>
