@@ -5,12 +5,12 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
+import android.view.WindowManager
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -35,8 +36,10 @@ import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.model.InDateStyle
 import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
+import com.kizitonwose.calendarview.utils.Size
 import com.kizitonwose.calendarview.utils.next
 import com.kizitonwose.calendarview.utils.yearMonth
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.YearMonth
@@ -58,6 +61,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var sharedViewModel: SharedViewModel
     private lateinit var adapter: HomeAdapter
+    //private lateinit var firstDate : LocalDate
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -71,15 +75,15 @@ class HomeFragment : Fragment() {
         val daysOfWeek = daysOfWeekFromLocale()
         binding.legendLayout.root.children.forEachIndexed { index, view ->
             (view as TextView).apply {
-                text = daysOfWeek[index].getDisplayName(TextStyle.SHORT, Locale.ENGLISH).toUpperCase(Locale.ENGLISH)
-                setTextColorRes(R.color.black)
+                text = daysOfWeek[index].getDisplayName(TextStyle.SHORT, Locale.ENGLISH)
             }
         }
 
         class DayViewContainer(view: View) : ViewContainer(view) {
             lateinit var day: CalendarDay
             val textView = CalendarDayLayoutBinding.bind(view).calendarDayText
-            //val dotView = CalendarDayLayoutBinding.bind(view).CalenderDotView
+            val dotView = CalendarDayLayoutBinding.bind(view).CalenderDotView
+
             init {
                 view.setOnClickListener {
                     if (day.owner == DayOwner.THIS_MONTH) {
@@ -111,46 +115,65 @@ class HomeFragment : Fragment() {
             override fun bind(container: DayViewContainer, day: CalendarDay) {
                 container.day = day
                 val textView = container.textView
-                //val dotView = container.dotView
+                val dotView = container.dotView
                 textView.text = day.date.dayOfMonth.toString()
 
                 if (day.owner == DayOwner.THIS_MONTH) {
                     when {
                         today == day.date -> {
-                            textView.setTextColorRes(R.color.example_3_white)
+                            textView.setTextColorRes(R.color.calendar_primary)
                             textView.setBackgroundResource(R.drawable.calendar_today_bg)
-                            //dotView.makeInVisible()
+                            dotView.makeInVisible()
                         }
                         selectedDates == day.date -> {
-                            textView.setTextColorRes(R.color.example_3_blue)
+                            textView.setTextColorRes(R.color.white)
                             textView.setBackgroundResource(R.drawable.calendar_selected_bg)
-                            //dotView.makeInVisible()
+                            dotView.makeInVisible()
                         }
                         else -> {
-                            textView.setTextColorRes(R.color.example_3_black)
+                            textView.setTextColorRes(R.color.white)
                             textView.background = null
                             val dateInString = selectionFormatter.format(day.date).toString()
                             sharedViewModel.selectedDateTodo(dateInString)
-                            //dotView.isVisible = events[day.date].orEmpty().isNotEmpty()
+                            sharedViewModel.readSelectedDateTodo.observe(viewLifecycleOwner)  { list ->
+                                sharedViewModel.checkIfDatabaseEmpty(list)
+                                sharedViewModel.emptyDatabase.value?.let {
+                                    dotView.isVisible = !it }
+                            }
                         }
                     }
                 } else {
-                    textView.setTextColorRes(R.color.example_1_white_light)
+                    textView.setTextColorRes(R.color.calendar_day)
                     textView.background = null
-                    //dotView.makeInVisible()
+                    dotView.makeInVisible()
                 }
             }
         }
 
+        @SuppressLint("SetTextI18n")
         binding.calendar.monthScrollListener = {
             calendarMonthScrollListner(it)
         }
 
         binding.weekModeCheckBox.setOnCheckedChangeListener { _, monthToWeek ->
-            val firstDate = binding.calendar.findFirstVisibleDay()?.date ?: return@setOnCheckedChangeListener
-            val lastDate = binding.calendar.findLastVisibleDay()?.date ?: return@setOnCheckedChangeListener
-            weekModeClickListner( endMonth, monthToWeek, firstDate, lastDate)
+            Log.d("CHECKED = ",monthToWeek.toString())
+            val firstDate =
+                binding.calendar.findFirstVisibleDay()?.date ?: return@setOnCheckedChangeListener
+            val lastDate =
+                binding.calendar.findLastVisibleDay()?.date ?: return@setOnCheckedChangeListener
+            weekModeClickListner(endMonth, monthToWeek, firstDate, lastDate)
         }
+
+
+        /*binding.calendar.apply {
+            val dm = DisplayMetrics()
+            val wm = requireContext().getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            wm.defaultDisplay.getMetrics(dm)
+            val monthWidth = (dm.widthPixels * 1).toInt()
+            val dayWidth = (monthWidth / 7.6).toInt()
+            val dayHeight = (dayWidth * 1.25).toInt() // We don't want a square calendar.
+            daySize = Size(dayWidth, dayHeight)
+        }*/
 
         binding.addBtn.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToAddFragment(0)
@@ -209,10 +232,12 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun TextView.setTextColorRes(@ColorRes color: Int) = setTextColor(context.getColorCompat(color))
+    private fun TextView.setTextColorRes(@ColorRes color: Int) =
+        setTextColor(context.getColorCompat(color))
 
     private fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
 
+    @SuppressLint("SetTextI18n")
     private fun calendarMonthScrollListner(it: CalendarMonth) {
         if (binding.calendar.maxRowCount == 6) {
             binding.yearText.text = it.yearMonth.year.toString()
@@ -225,17 +250,27 @@ class HomeFragment : Fragment() {
                 binding.monthText.text = monthTitleFormatter.format(firstDate)
             } else {
                 binding.monthText.text =
-                    "${monthTitleFormatter.format(firstDate)} - ${monthTitleFormatter.format(lastDate)}"
+                    "${monthTitleFormatter.format(firstDate)} - ${
+                        monthTitleFormatter.format(
+                            lastDate
+                        )
+                    }"
                 if (firstDate.year == lastDate.year) {
                     binding.yearText.text = firstDate.yearMonth.year.toString()
                 } else {
-                    binding.yearText.text = "${firstDate.yearMonth.year} - ${lastDate.yearMonth.year}"
+                    binding.yearText.text =
+                        "${firstDate.yearMonth.year} - ${lastDate.yearMonth.year}"
                 }
             }
         }
     }
 
-    private fun weekModeClickListner( endMonth: YearMonth, monthToWeek: Boolean, firstDate: LocalDate, lastDate: LocalDate){
+    private fun weekModeClickListner(
+        endMonth: YearMonth,
+        monthToWeek: Boolean,
+        firstDate: LocalDate,
+        lastDate: LocalDate
+    ) {
         val oneWeekHeight = binding.calendar.daySize.height
         val oneMonthHeight = oneWeekHeight * 6
 
@@ -243,9 +278,9 @@ class HomeFragment : Fragment() {
         val newHeight = if (monthToWeek) oneWeekHeight else oneMonthHeight
 
         val animator = ValueAnimator.ofInt(oldHeight, newHeight)
-        animator.addUpdateListener { animator ->
+        animator.addUpdateListener {
             binding.calendar.updateLayoutParams {
-                height = animator.animatedValue as Int
+                height = it.animatedValue as Int
             }
         }
         animator.doOnStart {
@@ -267,11 +302,15 @@ class HomeFragment : Fragment() {
             }
 
             if (monthToWeek) {
-                binding.calendar.scrollToDate(firstDate)
+                //if(selectedDates != null)
+                //binding.calendar.scrollToDate(selectedDates!!)
+                //else
+                binding.calendar.scrollToDate(today)
             } else {
                 if (firstDate.yearMonth == lastDate.yearMonth) {
                     binding.calendar.scrollToMonth(firstDate.yearMonth)
                 } else {
+                    //binding.calendar.scrollToMonth(firstDate.yearMonth)
                     binding.calendar.scrollToMonth(minOf(firstDate.yearMonth.next, endMonth))
                 }
             }
@@ -318,8 +357,8 @@ class HomeFragment : Fragment() {
         snackbar.show()
     }
 
-    private fun setVisibility (value : Boolean) {
-        when(value) {
+    private fun setVisibility(value: Boolean) {
+        when (value) {
             true -> {
                 binding.emptyTodoImageView.visibility = View.VISIBLE
                 binding.emptyTodoTxtview.visibility = View.VISIBLE

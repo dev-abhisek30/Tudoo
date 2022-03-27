@@ -5,83 +5,63 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="horizontal"
+    android:background="@color/calendar_primary"
     tools:ignore="HardcodedText">
 
     <TextView
         android:id="@+id/legendText1"
+        style="@style/calender_day"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/karla_regular"
-        android:gravity="center"
-        android:text="SUN"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:layout_height="wrap_content"
+        android:text="Sun" />
 
     <TextView
         android:id="@+id/legendText2"
+        style="@style/calender_day"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/karla_regular"
-        android:gravity="center"
-        android:text="MON"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:text="Mon" />
 
     <TextView
         android:id="@+id/legendText3"
+        style="@style/calender_day"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/karla_regular"
-        android:gravity="center"
-        android:text="TUE"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:text="Tue"/>
 
     <TextView
         android:id="@+id/legendText4"
+        style="@style/calender_day"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/karla_regular"
-        android:gravity="center"
-        android:text="WED"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:layout_height="wrap_content"
+        android:text="Wed"/>
 
     <TextView
         android:id="@+id/legendText5"
+        style="@style/calender_day"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/karla_regular"
-        android:gravity="center"
-        android:text="THU"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:text="Thu" />
 
     <TextView
         android:id="@+id/legendText6"
+        style="@style/calender_day"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/karla_regular"
-        android:gravity="center"
-        android:text="FRI"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:text="Fri" />
 
     <TextView
         android:id="@+id/legendText7"
+        style="@style/calender_day"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/karla_regular"
-        android:gravity="center"
-        android:text="SAT"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:text="Sat"/>
 
 </LinearLayout>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -14,46 +14,54 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/calendar_primary"
             android:clickable="true"
             android:focusable="true"
-            android:background="#E5E5E5"
             android:orientation="vertical">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:theme="@style/AppTheme.AppBarOverlay">
+                android:background="@color/calendar_primary"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:elevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="14dp">
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="14dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/yearText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
-                        android:fontFamily="@font/rubik_regular"
                         android:layout_gravity="start"
+                        android:fontFamily="@font/montserratalternates_semibold"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
                         tools:text="2019" />
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:id="@+id/monthText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/rubik_medium"
-                            android:textColor="@color/black"
-                            android:textSize="38sp"
+                            android:fontFamily="@font/montserratalternates_semibold"
+                            android:textColor="@color/white"
+                            android:textSize="36sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/weekModeCheckBox"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
                             tools:text="April" />
 
                         <CheckBox
@@ -61,13 +69,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="fill_horizontal"
-                            android:layout_marginBottom="20dp"
                             android:button="@drawable/checkbox_selector"
+                            android:buttonTint="@color/white"
                             android:padding="2dp"
-                            android:text=""
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
 
@@ -76,6 +86,8 @@
                     layout="@layout/calendar_day_legend"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginBottom="10dp" />
 
             </com.google.android.material.appbar.AppBarLayout>
@@ -84,45 +96,83 @@
                 android:id="@+id/calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 app:cv_dayViewResource="@layout/calendar_day_layout"
+                app:cv_inDateStyle="allMonths"
                 app:cv_orientation="horizontal"
                 app:cv_outDateStyle="endOfRow"
-                app:cv_inDateStyle="allMonths"
                 app:cv_scrollMode="paged" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/rubik_bold"
-                android:text="Today's Todos"
-                android:padding="14dp"
-                android:textSize="34sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/todoRecyclerView"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/constraint_layout_bg">
 
-            <ImageView
-                android:id="@+id/emptyTodoImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_empty_folder"
-                android:visibility="gone" />
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_close_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/emptyTodoTxtview"
-                style="@style/style5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No Todo Found"
-                android:layout_marginBottom="32dp"
-                android:layout_gravity="center"
-                android:visibility="gone" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/montserratalternates_semibold"
+                    android:text="Today's Tasks"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/todoRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                <ImageView
+                    android:id="@+id/emptyTodoImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_24dp"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:layout_marginEnd="@dimen/_24dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_no_task_img"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                <TextView
+                    android:id="@+id/emptyTodoTxtview"
+                    style="@style/style6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:text="No Tasks Found"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/emptyTodoImageView"
+                    app:layout_constraintStart_toStartOf="@+id/emptyTodoImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/emptyTodoImageView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
@@ -133,8 +183,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="20dp"
-        app:backgroundTint="@color/example_3_blue"
+        android:layout_margin="24dp"
+        app:backgroundTint="@color/calendar_primary"
         app:srcCompat="@drawable/ic_add"
         app:tint="@color/white"
         tools:ignore="SpeakableTextPresentCheck" />

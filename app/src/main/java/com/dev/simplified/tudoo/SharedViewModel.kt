@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -22,23 +23,26 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.time.Instant
+import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import java.util.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 class SharedViewModel(application: Application) : AndroidViewModel(application) {
+    var calender : Calendar = Calendar.getInstance()
+    var today : Date
+    var tomorrow : Date
     val readAllTodo: LiveData<List<Todo>>
     val readActiveTodo: LiveData<List<Todo>>
     val readCompleteTodo: LiveData<List<Todo>>
     var readSelectedDateTodo: LiveData<List<Todo>>
     val sortByHighPriority: LiveData<List<Todo>>
     val sortByLowPriority: LiveData<List<Todo>>
-    //var todaysDate = Calendar.getInstance()
     var todaysDate = Calendar.getInstance().time
     private val repository: TodoRepository
-    //var rand : Boolean
     val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
+
 
     init {
         val todoDao = TodoDatabase.getDatabase(application).todoDao()
@@ -52,6 +56,12 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         val timeFormat = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
         val dateInString = timeFormat.format(todaysDate.time)
         readSelectedDateTodo = repository.readSelectedDateTodo(dateInString)
+
+
+        calender.set(calender.time.year+1900,calender.time.month,calender.time.date,23,59,59)
+        today = calender.time
+        calender.add(Calendar.DAY_OF_YEAR,1)
+        tomorrow = calender.time
     }
 
     fun checkIfDatabaseEmpty(toDoData: List<Todo>){
@@ -148,5 +158,11 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     suspend fun setNewDateTime(context : Context) : Date {
         val date = context.openDateTimePicker()
         return Date.from(date)
+    }
+
+    fun getDataString(data:Date):String {
+        val timeFormat = SimpleDateFormat("EEE, dd-MM-yyyy, hh:mm a", Locale.ENGLISH)
+        val t = timeFormat.format(data.time).toString()
+        return t
     }
 }

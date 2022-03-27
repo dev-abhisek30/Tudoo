@@ -3,6 +3,36 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/calendar_selected_bg.xml" value="0.2165" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/calendar_today_bg.xml" value="0.2165" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/checkbox_selector.xml" value="0.27" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/close_line.xml" value="0.249" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/constraint_layout_bg.xml" value="0.249" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/ic_arrow_down.xml" value="0.27" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/ic_arrow_right.xml" value="0.182" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/ic_arrow_up.xml" value="0.27" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/ic_candle.xml" value="0.182" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/ic_cross.xml" value="0.182" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/ic_empty_folder.xml" value="0.249" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/ic_search.xml" value="0.249" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/ic_trash.xml" value="0.229" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/main_button_bg.xml" value="0.249" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/priority_btn_bg.xml" value="0.2165" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/recyclerview_bg.xml" value="0.2165" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/searchview_bg.xml" value="0.249" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/setting_btn_bg.xml" value="0.182" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/drawable/trash_button_bg.xml" value="0.249" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/layout/activity_main.xml" value="0.20471014492753623" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/layout/calendar_day_layout.xml" value="0.26473254759746145" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/layout/calendar_day_legend.xml" value="0.353125" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/layout/custom_row_layout.xml" value="0.19637978142076504" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/layout/fragment_add.xml" value="0.2" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/layout/fragment_all_todo.xml" value="0.353125" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/layout/fragment_update.xml" value="0.22" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2225" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_logo.xml" value="0.182" />
+        <entry key="..\:/Users/KIIT/New Android Studio Project/Tudoo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.182" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/bottom_selector_completed.xml" value="0.3515" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/bottom_selector_home.xml" value="0.3515" />
         <entry key="..\:/Users/KIIT/StudioProjects/Tudoo/app/src/main/res/drawable/bottom_selector_notification.xml" value="0.3515" />

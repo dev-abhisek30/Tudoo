@@ -7,38 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".AddFragment">
 
-    <Button
-        android:id="@+id/addTodoButton"
-        style="@style/style4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Continue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/addTodoTxtview"
-        style="@style/style1"
+        style="@style/addTaskAndUpdateTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Todo"
+        android:text="Add task"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titleTxtview"
-        style="@style/style2"
+        style="@style/addTitleTxtAndUpdateTitleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Todo Title"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="@dimen/_48dp"
+        android:text="Task Title"
         app:layout_constraintStart_toStartOf="@+id/addTodoTxtview"
         app:layout_constraintTop_toBottomOf="@+id/addTodoTxtview" />
 
     <EditText
         android:id="@+id/titleEditText"
-        style="@style/style3"
+        style="@style/taskEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Type title"
@@ -48,16 +38,17 @@
 
     <TextView
         android:id="@+id/description_txtview"
-        style="@style/style2"
+        style="@style/addTitleTxtAndUpdateTitleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Todo Description"
+        android:layout_marginTop="@dimen/_36dp"
+        android:text="Task Description"
         app:layout_constraintStart_toStartOf="@+id/titleEditText"
         app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
 
     <EditText
         android:id="@+id/descriptionEdittext"
-        style="@style/style3"
+        style="@style/taskEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Type Description"
@@ -67,9 +58,10 @@
 
     <TextView
         android:id="@+id/priority_txtview"
-        style="@style/style2"
+        style="@style/addTitleTxtAndUpdateTitleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30dp"
         android:text="Priority"
         app:layout_constraintStart_toStartOf="@+id/descriptionEdittext"
         app:layout_constraintTop_toBottomOf="@+id/descriptionEdittext" />
@@ -78,8 +70,7 @@
         android:id="@+id/priority_btn_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="@dimen/_12dp"
         app:justifyContent="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -89,41 +80,51 @@
         <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
             android:id="@+id/high_btn"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            app:toggle_selectedBackgroundColor="#FF4646"
-            app:toggle_selectedTextColor="#FFFFFF"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_12dp"
+            app:toggle_backgroundColor="@color/black_5"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="#FFF4EF"
+            app:toggle_selectedTextColor="@color/app_orange"
             app:toggle_text="High"
-            app:toggle_btnCornerRadius="10dp"
-            app:toggle_textSize="16sp" />
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
 
         <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
             android:id="@+id/medium_btn"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            app:toggle_selectedBackgroundColor="#FFC114"
-            app:toggle_selectedTextColor="#FFFFFF"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_12dp"
+            app:toggle_backgroundColor="@color/black_5"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="#FFF9E7"
+            app:toggle_selectedTextColor="@color/yellow"
             app:toggle_text="Medium"
-            app:toggle_btnCornerRadius="10dp"
-            app:toggle_textSize="16sp" />
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
 
         <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
             android:id="@+id/low_btn"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            app:toggle_selectedBackgroundColor="#00C980"
-            app:toggle_selectedTextColor="#FFFFFF"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_12dp"
+            app:toggle_backgroundColor="@color/black_5"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="#E5F2F2"
+            app:toggle_selectedTextColor="@color/calendar_primary"
             app:toggle_text="Low"
-            app:toggle_btnCornerRadius="10dp"
-            app:toggle_textSize="16sp" />
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
 
     </nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup>
 
     <TextView
         android:id="@+id/deadline_txtview"
-        style="@style/style2"
+        style="@style/addTitleTxtAndUpdateTitleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deadline"
+        android:layout_marginTop="@dimen/_24dp"
+        android:text="Due"
         app:layout_constraintStart_toStartOf="@+id/priority_btn_group"
         app:layout_constraintTop_toBottomOf="@+id/priority_btn_group" />
 
@@ -131,25 +132,84 @@
         android:id="@+id/deadline_btn_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:justifyContent="center"
+        android:layout_marginTop="@dimen/_6dp"
+        android:layout_marginEnd="@dimen/_24dp"
+        app:flexWrap="wrap"
+        app:justifyContent="space_between"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/deadline_txtview"
         app:layout_constraintTop_toBottomOf="@+id/deadline_txtview">
 
         <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+            android:id="@+id/today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="@dimen/_6dp"
+            android:layout_marginBottom="@dimen/_6dp"
+            app:toggle_backgroundColor="@color/black_5"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="@color/continue_bg"
+            app:toggle_selectedTextColor="@color/app_orange"
+            app:toggle_text="Today"
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
+
+        <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+            android:id="@+id/tomorrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6dp"
+            android:layout_marginStart="@dimen/_6dp"
+            android:layout_marginEnd="@dimen/_12dp"
+            android:layout_marginBottom="@dimen/_6dp"
+            app:toggle_backgroundColor="@color/black_5"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="@color/continue_bg"
+            app:toggle_selectedTextColor="@color/app_orange"
+            app:toggle_text="Tomorrow"
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
+
+        <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
             android:id="@+id/choose_btn"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            app:toggle_textSize="16sp"
-            app:toggle_btnCornerRadius="10dp"
-            app:toggle_circularCornerRadius = "false"
-            app:toggle_selectedBackgroundColor="@color/black"
-            app:toggle_selectedTextColor="#FFFFFF"
-            app:toggle_text="Choose Deadline" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="@dimen/_12dp"
+            android:layout_marginBottom="@dimen/_6dp"
+            app:toggle_backgroundColor="@color/black_5"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="@color/continue_bg"
+            app:toggle_selectedTextColor="@color/app_orange"
+            app:toggle_text="Custom"
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
 
     </nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup>
+
+    <Button
+        android:id="@+id/addTodoButton"
+        style="@style/style4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        app:backgroundTint="@color/continue_bg"
+        app:layout_constraintBottom_toTopOf="@+id/closeTxtview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/closeTxtview"
+        style="@style/style6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/addTodoButton"
+        app:layout_constraintStart_toStartOf="@+id/addTodoButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

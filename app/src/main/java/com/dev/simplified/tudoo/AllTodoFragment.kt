@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
-import android.widget.SearchView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -64,10 +61,10 @@ class AllTodoFragment : Fragment(){
             adapter.setData(user)
         }
 
-        val id = binding.searchView.context.resources.getIdentifier("android:id/search_src_text", null, null)
+        /*val id = binding.searchView.context.resources.getIdentifier("android:id/search_src_text", null, null)
         val searchView = binding.searchView.findViewById<TextView>(id)
-        val myCustomFont = context?.let { ResourcesCompat.getFont(it,R.font.karla_medium) }
-        searchView.setTypeface(myCustomFont)
+        val myCustomFont = context?.let { ResourcesCompat.getFont(it,R.font.montserratalternates_medium) }
+        searchView.setTypeface(myCustomFont)*/
 
         binding.addBtn.setOnClickListener {
             val action = AllTodoFragmentDirections.actionAllTodoFragmentToAddFragment(1)

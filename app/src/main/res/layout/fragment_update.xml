@@ -6,38 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".UpdateFragment">
 
-    <Button
-        android:id="@+id/updateTodoButton"
-        style="@style/style4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/updateTaskTxtview"
-        style="@style/style1"
+        style="@style/addTaskAndUpdateTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update Todo"
+        android:text="Update task"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/updateTitleTxtview"
-        style="@style/style2"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="Todo Title"
+        android:layout_marginEnd="@dimen/_24dp"
+        android:background="@drawable/trash_button_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/updateTaskTxtview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/updateTaskTxtview">
+
+        <ImageView
+            android:id="@+id/deleteImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_2dp"
+            android:src="@drawable/ic_trash"
+            app:tint="@color/calendar_primary" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/updateTitleTxtview"
+        style="@style/addTitleTxtAndUpdateTitleTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_48dp"
+        android:text="Task Title"
         app:layout_constraintStart_toStartOf="@+id/updateTaskTxtview"
         app:layout_constraintTop_toBottomOf="@+id/updateTaskTxtview" />
 
     <EditText
         android:id="@+id/updateTitleEditText"
-        style="@style/style3"
+        style="@style/taskEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Type Title"
@@ -47,16 +56,17 @@
 
     <TextView
         android:id="@+id/updateDescriptionTxtview"
-        style="@style/style2"
+        style="@style/addTitleTxtAndUpdateTitleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_36dp"
         android:text="Task Description"
         app:layout_constraintStart_toStartOf="@+id/updateTitleEditText"
         app:layout_constraintTop_toBottomOf="@+id/updateTitleEditText" />
 
     <EditText
         android:id="@+id/updateDescriptionEdittext"
-        style="@style/style3"
+        style="@style/taskEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Type Description"
@@ -66,9 +76,10 @@
 
     <TextView
         android:id="@+id/updatePriorityTxtview"
-        style="@style/style2"
+        style="@style/addTitleTxtAndUpdateTitleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30dp"
         android:text="Priority"
         app:layout_constraintStart_toStartOf="@+id/updateDescriptionEdittext"
         app:layout_constraintTop_toBottomOf="@+id/updateDescriptionEdittext" />
@@ -77,7 +88,7 @@
         android:id="@+id/updatePriorityBtnGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/_12dp"
         app:justifyContent="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -87,41 +98,50 @@
         <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
             android:id="@+id/updateHighBtn"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            app:toggle_btnCornerRadius="10dp"
-            app:toggle_selectedBackgroundColor="#FF4646"
-            app:toggle_selectedTextColor="#FFFFFF"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_12dp"
+            app:toggle_backgroundColor="@color/black_5"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="#FFF4EF"
+            app:toggle_selectedTextColor="@color/app_orange"
             app:toggle_text="High"
-            app:toggle_textSize="16sp" />
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
 
         <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
             android:id="@+id/updateMediumBtn"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            app:toggle_btnCornerRadius="10dp"
-            app:toggle_selectedBackgroundColor="#FFC114"
-            app:toggle_selectedTextColor="#FFFFFF"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_12dp"
+            app:toggle_backgroundColor="@color/black_5"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="#FFF9E7"
+            app:toggle_selectedTextColor="@color/yellow"
             app:toggle_text="Medium"
-            app:toggle_textSize="16sp" />
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
 
         <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
             android:id="@+id/updateLowBtn"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            app:toggle_btnCornerRadius="10dp"
-            app:toggle_selectedBackgroundColor="#00C980"
-            app:toggle_selectedTextColor="#FFFFFF"
+            android:layout_height="wrap_content"
+            app:toggle_backgroundColor="@color/black_5"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="#E5F2F2"
+            app:toggle_selectedTextColor="@color/calendar_primary"
             app:toggle_text="Low"
-            app:toggle_textSize="16sp" />
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
 
     </nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup>
 
     <TextView
         android:id="@+id/updateDeadlineTxtview"
-        style="@style/style2"
+        style="@style/addTitleTxtAndUpdateTitleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deadline"
+        android:layout_marginTop="@dimen/_24dp"
+        android:text="Due"
         app:layout_constraintStart_toStartOf="@+id/updatePriorityBtnGroup"
         app:layout_constraintTop_toBottomOf="@+id/updatePriorityBtnGroup" />
 
@@ -129,33 +149,83 @@
         android:id="@+id/updateDeadlineBtnGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:justifyContent="center"
+        android:layout_marginTop="@dimen/_6dp"
+        android:layout_marginEnd="@dimen/_24dp"
+        app:flexWrap="wrap"
+        app:justifyContent="space_between"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/updateDeadlineTxtview"
         app:layout_constraintTop_toBottomOf="@+id/updateDeadlineTxtview">
 
         <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+            android:id="@+id/updateToday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="@dimen/_6dp"
+            android:layout_marginBottom="@dimen/_6dp"
+            app:toggle_backgroundColor="@color/black_5"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="@color/continue_bg"
+            app:toggle_selectedTextColor="@color/app_orange"
+            app:toggle_text="Today"
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
+
+        <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+            android:id="@+id/updateTomorrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6dp"
+            android:layout_marginStart="@dimen/_6dp"
+            android:layout_marginEnd="@dimen/_12dp"
+            android:layout_marginBottom="@dimen/_6dp"
+            app:toggle_backgroundColor="@color/black_5"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="@color/continue_bg"
+            app:toggle_selectedTextColor="@color/app_orange"
+            app:toggle_text="Tomorrow"
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
+
+        <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
             android:id="@+id/updateChooseBtn"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            app:toggle_textSize="16sp"
-            app:toggle_btnCornerRadius="10dp"
-            app:toggle_selectedBackgroundColor="@color/black"
-            app:toggle_selectedTextColor="#FFFFFF"
-            app:toggle_text="Choose Deadline" />
+            android:layout_height="wrap_content"
+            app:toggle_backgroundColor="@color/black_5"
+            android:layout_marginTop="@dimen/_6dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="@dimen/_12dp"
+            android:layout_marginBottom="@dimen/_6dp"
+            app:toggle_padding="@dimen/_12dp"
+            app:toggle_selectedBackgroundColor="@color/continue_bg"
+            app:toggle_selectedTextColor="@color/app_orange"
+            app:toggle_text="Custom"
+            app:toggle_textColor="@color/black"
+            app:toggle_textSize="@dimen/font_size_14" />
 
     </nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup>
 
     <Button
-        android:id="@+id/CompleteTodoButton"
+        android:id="@+id/updateTodoButton"
         style="@style/style4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Delete"
-        app:layout_constraintBottom_toTopOf="@+id/updateTodoButton"
+        android:text="Save"
+        app:backgroundTint="@color/continue_bg"
+        app:layout_constraintBottom_toTopOf="@+id/closeTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/closeTextView"
+        style="@style/style6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/updateTodoButton"
         app:layout_constraintStart_toStartOf="@+id/updateTodoButton" />
 

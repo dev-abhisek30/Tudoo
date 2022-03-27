@@ -6,6 +6,8 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="black_50">#80000000</color>
+    <color name="black_5">#0D000000</color>
     <color name="white">#FFFFFFFF</color>
 
 
@@ -23,5 +25,19 @@
 
     <color name="red">#FF4646</color>
     <color name="yellow">#FFC114</color>
+    <color name="yellow_10">#1AFFC114</color>
     <color name="green">#00C980</color>
+
+    <color name="calendar_day">#80FFFFFF</color>
+    <color name="calendar_primary">#008080</color>
+    <color name="calendar_primary_10">#1A008080</color>
+    <color name="calendar_primary_20">#33008080</color>
+    <color name="app_primary_20">#32008080</color>
+    <color name="task_title_black">#1C2D36</color>
+    <color name="task_title_black_30">#481C2D36</color>
+    <color name="app_orange">#FF8F5C</color>
+    <color name="app_orange_10">#1AFF8F5C</color>
+
+    <color name="continue_bg">#FFF0EA</color>
+    <color name="continue_text">#EB8507</color>
 </resources>

@@ -4,12 +4,17 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.content.res.ResourcesCompat.getColor
+import androidx.core.view.get
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -54,10 +59,36 @@ class AddFragment : Fragment() {
 
         val priorityButtonGroup = binding.priorityBtnGroup
         priorityButtonGroup.selectButton(binding.highBtn)
+        binding.highBtn.applyToTexts {
+            it.setTypeface(context?.let { it1 -> ResourcesCompat.getFont(it1,R.font.montserratalternates_medium) },Typeface.NORMAL)
+        }
+        binding.mediumBtn.applyToTexts {
+            it.setTypeface(context?.let { it1 -> ResourcesCompat.getFont(it1,R.font.montserratalternates_medium) },Typeface.NORMAL)
+        }
+        binding.lowBtn.applyToTexts {
+            it.setTypeface(context?.let { it1 -> ResourcesCompat.getFont(it1,R.font.montserratalternates_medium) },Typeface.NORMAL)
+        }
+        binding.today.applyToTexts {
+            it.setTypeface(context?.let { it1 -> ResourcesCompat.getFont(it1,R.font.montserratalternates_medium) },
+                Typeface.NORMAL)
+        }
+        binding.tomorrow.applyToTexts {
+            it.setTypeface(context?.let { it1 -> ResourcesCompat.getFont(it1,R.font.montserratalternates_medium) },
+                Typeface.NORMAL)
+        }
+        binding.chooseBtn.applyToTexts {
+            it.setTypeface(context?.let { it1 -> ResourcesCompat.getFont(it1,R.font.montserratalternates_medium) },Typeface.NORMAL)
+        }
         val deadlineButtonGroup = binding.deadlineBtnGroup
         deadlineButtonGroup.setOnSelectListener { button: ThemedButton ->
             val deadlineSelectedButtons = deadlineButtonGroup.selectedButtons[0]
-            deadlineSelectedButtons.setOnClickListener {
+            if(deadlineSelectedButtons.text == "Today"){
+                //date = sharedViewModel.getTodayAndTomorrow(true)
+                date = sharedViewModel.today
+            }else if(deadlineSelectedButtons.text == "Tomorrow"){
+                //date = sharedViewModel.getTodayAndTomorrow(false)
+                date = sharedViewModel.tomorrow
+            }else {
                 CoroutineScope(Dispatchers.Main).launch {
                     date = sharedViewModel.setNewDateTime(requireContext())
                     val timeFormat = SimpleDateFormat("EEE, dd-MM-yyyy, hh:mm a", Locale.ENGLISH)
@@ -65,11 +96,29 @@ class AddFragment : Fragment() {
                     binding.chooseBtn.text = time.toString()
                 }
             }
+            /*deadlineSelectedButtons.setOnClickListener {
+                CoroutineScope(Dispatchers.Main).launch {
+                    date = sharedViewModel.setNewDateTime(requireContext())
+                    val timeFormat = SimpleDateFormat("EEE, dd-MM-yyyy, hh:mm a", Locale.ENGLISH)
+                    val time = timeFormat.format(date.time)
+                    binding.chooseBtn.text = time.toString()
+                }
+            }*/
+            val timeFormat = SimpleDateFormat("EEE, dd-MM-yyyy, hh:mm a", Locale.ENGLISH)
+            val time = timeFormat.format(date.time)
+            Toast.makeText(requireContext(), time.toString(), Toast.LENGTH_LONG).show()
             chosenDate = true
         }
 
         binding.addTodoButton.setOnClickListener {
             insertTaskToDB()
+        }
+
+        binding.closeTxtview.setOnClickListener {
+            if(args.fragmentNo == 0)
+                findNavController().navigate(R.id.action_addFragment_to_homeFragment)
+            else
+                findNavController().navigate(R.id.action_addFragment_to_allTodoFragment)
         }
         return view
     }

@@ -32,12 +32,14 @@ class AllTodoAdapter : RecyclerView.Adapter<AllTodoAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = todoList[position]
-        holder.itemView.textView2.text = currentItem.title.toString()
-        holder.itemView.textView3.text = currentItem.description.toString()
-        holder.itemView.priority_txt.text = currentItem.priority.toString()
+        holder.itemView.taskTxtview.text = currentItem.title.toString()
+        //holder.itemView.textView3.text = currentItem.description.toString()
+        holder.itemView.priorityTxt.text = currentItem.priority.toString().toLowerCase()
+        val j = parsePriorityToTextColor(currentItem.priority)
+        holder.itemView.priorityTxt.setTextColor(ContextCompat.getColor(holder.itemView.context,j))
         holder.itemView.deadlineTxtview.text = getDeadline(currentItem.deadline)
         val i = parsePriorityToColor(currentItem.priority)
-        holder.itemView.priority_btn.background.setTint(ContextCompat.getColor(holder.itemView.context,i))
+        holder.itemView.priorityBtn.background.setTint(ContextCompat.getColor(holder.itemView.context,i))
 
         holder.itemView.rowLayout.setOnClickListener {
             val action = AllTodoFragmentDirections.actionAllTodoFragmentToUpdateFragment(currentItem,1)
@@ -68,13 +70,30 @@ class AllTodoAdapter : RecyclerView.Adapter<AllTodoAdapter.MyViewHolder>() {
         var color = R.color.black
         when (selectedPriority.toString()) {
             "HIGH" -> {
-                color = R.color.red
+                color = R.color.app_orange_10
+            }
+            "MEDIUM" -> {
+                color = R.color.yellow_10
+            }
+            "LOW" -> {
+                color = R.color.calendar_primary_10
+            }
+            else -> color = R.color.black
+        }
+        return color
+    }
+
+    private fun parsePriorityToTextColor(selectedPriority: Priority) : Int{
+        var color = R.color.black
+        when (selectedPriority.toString()) {
+            "HIGH" -> {
+                color = R.color.app_orange
             }
             "MEDIUM" -> {
                 color = R.color.yellow
             }
             "LOW" -> {
-                color = R.color.green
+                color = R.color.calendar_primary
             }
             else -> color = R.color.black
         }
